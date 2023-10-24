@@ -19,11 +19,14 @@ export class SpotifyService {
   async inicializarUsuario() {
     if(!!this.usuario)
       return true;
+
     const token = localStorage.getItem('token');
+
     if(!token)
       return false
 
     try {
+      
       this.definirAccessToken(token);
       await this.obterSpotifyUsuario();
       return !!this.usuario;
