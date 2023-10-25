@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import {SpotifyConfiguration} from "../../environments/environment";
 import Spotify from 'spotify-web-api-js';
 import { IUsuario } from '../Interfaces/IUsuario';
-import { SpotifyUserparaUsuario } from '../Common/spotifyHelper'
+import { IPlaylist } from '../Interfaces/IPlaylist';
+import { SpotifyUserParaUsuario } from '../Common/spotifyHelper'
+import { SpotifyPlaylistParaPlaylist } from '../Common/spotifyHelper'
 
 @Injectable({
   providedIn: 'root'
@@ -36,10 +38,21 @@ export class SpotifyService {
     }
   }
 
+  // async obterSpotifyUsuario() {
+  //   const userInfo = await this.spotifyApi.getMe();
+  //   this.usuario = SpotifyUserParaUsuario(userInfo);
+  // }
+
   async obterSpotifyUsuario() {
-    const userInfo = await this.spotifyApi.getMe();
-    this.usuario = SpotifyUserparaUsuario(userInfo);
+    try {
+      const userInfo = await this.spotifyApi.getMe();
+      console.log('Resposta do Spotify API:', userInfo);
+      this.usuario = SpotifyUserParaUsuario(userInfo);
+    } catch (error) {
+      console.error('Erro ao obter informações do usuário:', error);
+    }
   }
+  
 
   obterUrlLogin() {
     const authEndPoint = `${SpotifyConfiguration.authEndPoint}?`;
@@ -61,5 +74,12 @@ export class SpotifyService {
   definirAccessToken(token: string) {
     this.spotifyApi.setAccessToken(token);
     localStorage.setItem('token', token);
+  }
+
+  async buscarPlaylistUsuario(offset = 0, limit = 50): Promise<IPlaylist[]>{
+    console.log(this.usuario);
+    const playlists = await this.spotifyApi.getUserPlaylists(this.usuario.id, { offset, limit });
+    console.log(playlists)
+    return playlists.items.map(SpotifyPlaylistParaPlaylist);
   }
 }
