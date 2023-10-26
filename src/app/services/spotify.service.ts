@@ -14,7 +14,7 @@ export class SpotifyService {
   spotifyApi: Spotify.SpotifyWebApiJs = null;
   usuario: IUsuario;
 
-  constructor() { 
+  constructor() {
     this.spotifyApi = new Spotify();
   }
 
@@ -28,7 +28,7 @@ export class SpotifyService {
       return false
 
     try {
-      
+
       this.definirAccessToken(token);
       await this.obterSpotifyUsuario();
       return !!this.usuario;
@@ -52,7 +52,7 @@ export class SpotifyService {
       console.error('Erro ao obter informações do usuário:', error);
     }
   }
-  
+
 
   obterUrlLogin() {
     const authEndPoint = `${SpotifyConfiguration.authEndPoint}?`;
@@ -64,7 +64,7 @@ export class SpotifyService {
   }
 
   obterTokenUrlCallback() {
-    if (!window.location.hash) 
+    if (!window.location.hash)
       return '';
 
     const params = window.location.hash.substring(1).split('&')
@@ -76,10 +76,10 @@ export class SpotifyService {
     localStorage.setItem('token', token);
   }
 
-  async buscarPlaylistUsuario(offset = 0, limit = 50): Promise<IPlaylist[]>{
+  async buscarPlaylistUsuario(offset = 0, limit = 50) :Promise<IPlaylist[]>{
     console.log(this.usuario);
     const playlists = await this.spotifyApi.getUserPlaylists(this.usuario.id, { offset, limit });
-    console.log(playlists)
+    console.log(playlists);
     return playlists.items.map(SpotifyPlaylistParaPlaylist);
   }
 }
