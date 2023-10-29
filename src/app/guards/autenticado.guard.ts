@@ -11,7 +11,7 @@ export class AutenticadoGuard implements CanLoad {
   constructor(
     private router: Router,
     private spotifyService: SpotifyService) {
-    
+
   }
 
   canLoad(
@@ -25,15 +25,14 @@ export class AutenticadoGuard implements CanLoad {
     }
 
     return new Promise(async (res) => {
-      const usuarioCriado = this.spotifyService.inicializarUsuario(); // era pra ser await this.spotify
+      const usuarioCriado = await this.spotifyService.inicializarUsuario();
       if (usuarioCriado)
         res(true);
       else
         res(this.naoAutenticado());
     })
-
-    return true;
   }
+
   naoAutenticado() {
     localStorage.clear();
     this.router.navigate(['/login']);
