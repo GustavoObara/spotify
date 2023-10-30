@@ -68,4 +68,9 @@ export class SpotifyService {
     const playlists = await this.spotifyApi.getUserPlaylists(this.usuario.id, { offset, limit });
     return playlists.items.map(SpotifyPlaylistParaPlaylist);
   }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
 }
