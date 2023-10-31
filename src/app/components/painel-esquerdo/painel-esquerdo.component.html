@@ -5,16 +5,16 @@
 
     <div class="menu-container flex opcoes">
 
-        <app-botao-menu [descricao]="'Home'" [selecionado]="menuSelecionado === 'Home'" (click)="botaoClick('Home')">
+        <app-botao-menu [descricao]="'Home'" [selecionado]="menuSelecionado === 'Home'" (click)="botaoClickHome('Home')">
             <fa-icon [icon]="homeIcone"></fa-icon>
         </app-botao-menu>
 
-        <app-botao-menu [descricao]="'Pesquisar'" [selecionado]="menuSelecionado === 'Pesquisar'" (click)="botaoClick('Pesquisar')">
+        <app-botao-menu [descricao]="'Pesquisar'" [selecionado]="menuSelecionado === 'Pesquisar'" (click)="botaoClickHome('Pesquisar')">
             <fa-icon [icon]="pesquisarIcone"></fa-icon>
         </app-botao-menu>
 
-        <app-botao-menu [descricao]="'Artistas'" [selecionado]="menuSelecionado === 'Artistas'" (click)="botaoClick('Artistas')">
-            <fa-icon [icon]="artistasIcone"></fa-icon>
+        <app-botao-menu [descricao]="'Dashboard'" [selecionado]="menuSelecionado === 'Dashboard'" (click)="botaoClickDashboard('Dashboard')">
+            <fa-icon [icon]="dashboardIcone"></fa-icon>
         </app-botao-menu>
 
     </div>

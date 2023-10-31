@@ -5,6 +5,7 @@ import {
   faSearch,
   faGuitar,
   faMusic,
+  faBarChart
 } from '@fortawesome/free-solid-svg-icons';
 import { IPlaylist } from 'src/app/Interfaces/IPlaylist';
 import { SpotifyService } from 'src/app/services/spotify.service';
@@ -24,6 +25,7 @@ export class PainelEsquerdoComponent implements OnInit {
   pesquisarIcone = faSearch;
   artistasIcone = faGuitar;
   playlistIcone = faMusic;
+  dashboardIcone = faBarChart;
 
   constructor(private router: Router, private spotifyService: SpotifyService) {}
 
@@ -31,9 +33,13 @@ export class PainelEsquerdoComponent implements OnInit {
     this.buscarPlaylists();
   }
 
-  botaoClick(botao: string) {
+  botaoClickHome(botao: string) {
     this.menuSelecionado = botao;
     this.router.navigateByUrl('player/home');
+  }
+  botaoClickDashboard(botao: string) {
+    this.menuSelecionado = botao;
+    this.router.navigateByUrl('player/dashboard');
   }
 
   async buscarPlaylists() {
