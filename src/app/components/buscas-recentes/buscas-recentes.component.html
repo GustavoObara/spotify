@@ -1,0 +1,16 @@
+<input
+  type="text"
+  [(ngModel)]="campoPesquisa"
+  (keyup.Enter)="buscar()"
+  placeholder="Oque você quer ouvir?"
+/>
+<div class="sugestoes flex">
+  <span
+    *ngFor="let pesquisa of pesquisasRecentes"
+    (click)="definirPesquisa(pesquisa)"
+    (click)="buscar()"
+    [class.buscando]="pesquisa === campoPesquisa"
+  >
+    {{ pesquisa }}
+  </span>
+</div>

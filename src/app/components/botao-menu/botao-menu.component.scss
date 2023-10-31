@@ -26,6 +26,10 @@
         color: $cor-primaria;
         background-color: transparent;
 
+        &:hover {
+            background-color: rgba($preto-transparent-03, .05);
+        }
+
         &.selecionado { 
             background-color: $cor-primaria;
             color: $branco;
