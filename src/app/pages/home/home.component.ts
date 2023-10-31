@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit, OnDestroy{
 
   subs: Subscription[] = [];
 
-  // IconePlay
   playIcone = faPlay;
 
   constructor(

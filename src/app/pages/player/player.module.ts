@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlayerComponent } from './player.component';
-import { RouterModule} from "@angular/router";
+import { RouterModule } from '@angular/router';
 import { PlayerRotas } from './player.routes';
 import { PainelEsquerdoComponent } from 'src/app/components/painel-esquerdo/painel-esquerdo.component';
 import { BotaoMenuComponent } from 'src/app/components/botao-menu/botao-menu.component';
@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { TopArtistasComponent } from 'src/app/components/top-artistas/top-artistas.component';
 import { ArtistaImagemComponent } from 'src/app/components/artista-imagem/artista-imagem.component';
 import { PlayerCardComponent } from 'src/app/components/player-card/player-card.component';
+import { ListaMusicasComponent } from '../lista-musicas/lista-musicas.component';
+import { BannerComponent } from 'src/app/components/banner/banner.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +30,15 @@ import { PlayerCardComponent } from 'src/app/components/player-card/player-card.
     BuscasRecentesComponent,
     TopArtistasComponent,
     ArtistaImagemComponent,
-    PlayerCardComponent
-  ], 
+    PlayerCardComponent,
+    ListaMusicasComponent,
+    BannerComponent,
+  ],
   imports: [
     CommonModule,
     FontAwesomeModule,
     FormsModule,
     RouterModule.forChild(PlayerRotas),
-  ]
+  ],
 })
-export class PlayerModule { }
+export class PlayerModule {}

@@ -11,5 +11,5 @@ export interface IMusica {
         imagemUrl: string
     },
     tempo: string,
-    isPlaying: boolean,
+    isPlaying?: boolean,
 }
