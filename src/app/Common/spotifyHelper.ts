@@ -4,6 +4,7 @@ import { IUsuario } from '../Interfaces/IUsuario';
 import { IArtista } from '../Interfaces/IArtista';
 import { IMusica } from '../Interfaces/IMusica';
 import { SpotifyService } from '../services/spotify.service';
+import { newMusica } from "./factories";
 
 export function SpotifyUserParaUsuario(user: SpotifyApi.CurrentUsersProfileResponse): IUsuario {
     return {
@@ -29,8 +30,11 @@ export function SpotifyArtistaParaArtista(spotifyArtista: SpotifyApi.ArtistObjec
     };
 }
 
-export function SpotifyTrackParaMusica(spotifyTrack: SpotifyApi.TrackObjectFull) : IMusica {
+export function SpotifyTrackParaMusica(spotifyTrack: SpotifyApi.TrackObjectFull, playing: boolean) : IMusica {
     
+    if(!spotifyTrack)
+        return newMusica()
+
     const msParaMinutos = (ms: number) => {
         const data= addMilliseconds(new Date(0), ms);
         return format(data, 'mm:ss');
@@ -48,6 +52,7 @@ export function SpotifyTrackParaMusica(spotifyTrack: SpotifyApi.TrackObjectFull)
             id: artista.id,
             nome: artista.name
         })),
-        tempo: msParaMinutos(spotifyTrack.duration_ms)
+        tempo: msParaMinutos(spotifyTrack.duration_ms),
+        isPlaying: playing
     }
 }

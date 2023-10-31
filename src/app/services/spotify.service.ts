@@ -78,7 +78,12 @@ export class SpotifyService {
 
   async buscarMusicas(offset=0, limit=50):Promise<IMusica[]>{
     const musicas = await this.spotifyApi.getMySavedTracks({offset, limit});
-    return musicas.items.map(x => SpotifyTrackParaMusica(x.track));
+    return musicas.items.map(x => SpotifyTrackParaMusica(x.track, false));
+  }
+
+  async obterMusicaAtual(): Promise<IMusica>{
+    const musicaAtual = await this.spotifyApi.getMyCurrentPlayingTrack();
+    return SpotifyTrackParaMusica(musicaAtual.item, musicaAtual.is_playing);
   }
 
   async executarMusica(musicaId: string){
@@ -86,6 +91,19 @@ export class SpotifyService {
     await this.spotifyApi.skipToNext();
   }
 
+  async voltarMusica() {
+    this.spotifyApi.skipToPrevious();
+  }
+  async avancarMusica() {
+    this.spotifyApi.skipToNext();
+  }
+  async playAndPause(){
+    if((await this.spotifyApi.getMyCurrentPlayingTrack()).is_playing)
+      this.spotifyApi.pause();
+    else
+    this.spotifyApi.play()
+  }
+  
   logout() {
     localStorage.clear();
     this.router.navigate(['/login']);
