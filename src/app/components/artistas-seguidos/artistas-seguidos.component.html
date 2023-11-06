@@ -1,0 +1,8 @@
+<app-artista-imagem
+  *ngFor="let artista of artistas"
+  class="mt-1"
+  [imagemSrc]="artista.imagemUrl"
+  (click)="irParaArtista(artista.id)"
+>
+  {{ artista.nome }}
+</app-artista-imagem>

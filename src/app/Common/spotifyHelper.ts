@@ -13,13 +13,26 @@ export function SpotifyUserParaUsuario(user: SpotifyApi.CurrentUsersProfileRespo
     }
 }
 
+// export function SpotifyPlaylistParaPlaylist(playlist: SpotifyApi.PlaylistObjectSimplified): IPlaylist {
+//     return {
+//         id: playlist.id,
+//         nome: playlist.name,
+//         imagemUrl: playlist.images.pop().url
+//     }
+// }
+
 export function SpotifyPlaylistParaPlaylist(playlist: SpotifyApi.PlaylistObjectSimplified): IPlaylist {
+    if (!playlist || !playlist.images || playlist.images.length === 0) {
+        return newPlaylist();
+    }
+
     return {
         id: playlist.id,
         nome: playlist.name,
-        imagemUrl: playlist.images.pop().url
-    }
+        imagemUrl: playlist.images[0].url // Use o primeiro elemento do array, em vez de usar pop()
+    };
 }
+
 export function SpotifySinglePlaylistParaPlaylist(playlist: SpotifyApi.SinglePlaylistResponse): IPlaylist {
     if(!playlist)
         return newPlaylist();
