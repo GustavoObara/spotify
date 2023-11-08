@@ -25,4 +25,8 @@ export class RodapeUsuarioComponent implements OnInit {
     this.spotifyService.logout();
   }
 
+  openModal() {
+    this.spotifyService.logout();
+  }
+
 }
