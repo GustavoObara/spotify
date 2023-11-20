@@ -1,6 +1,7 @@
 import { addMilliseconds, format } from "date-fns";
 import { IPlaylist } from '../Interfaces/IPlaylist';
 import { IUsuario } from '../Interfaces/IUsuario';
+import { IUsuarioDetalhado } from '../Interfaces/IUsuarioDetalhado';
 import { IArtista } from '../Interfaces/IArtista';
 import { IMusica } from '../Interfaces/IMusica';
 import { newArtista, newMusica, newPlaylist } from "./factories";
@@ -10,6 +11,14 @@ export function SpotifyUserParaUsuario(user: SpotifyApi.CurrentUsersProfileRespo
         id: user.id,
         nome: user.display_name,
         imagemUrl: user.images.pop().url
+    }
+}
+export function SpotifyUserParaUsuarioDetalhado(user: SpotifyApi.CurrentUsersProfileResponse): IUsuarioDetalhado {
+    return {
+        id: user.id,
+        nome: user.display_name,
+        imagemUrl: user.images[1].url,
+        seguidores: user.followers.total
     }
 }
 

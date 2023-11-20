@@ -27,3 +27,12 @@
         text-overflow: ellipsis;
     }
 }
+
+.dark-mode {
+    &:hover {
+        background-color: $branco-dark;
+    }
+    span {
+        color: $preto-transparent-70-dark;
+    }
+}

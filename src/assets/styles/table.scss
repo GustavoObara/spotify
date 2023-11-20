@@ -1,6 +1,6 @@
 @import 'variaveis';
 
-.table {
+table {
     width: 100%;
     text-align: left;
     table-layout: fixed;
@@ -69,5 +69,22 @@
             color: $cor-primaria;
         }
     }
-
+    &.dark-mode {
+        thead th {
+            color: $preto-transparent-30-dark;
+            border: none;
+        }
+        tr {
+            td {
+                color: $preto-transparent-70-dark;
+                border: none;
+            }
+        }
+        .executando {
+            background-color: $branco-dark;
+            border: none;
+            // box-shadow: 0px 0px 15px $preto-transparent-30-dark;
+        }
+    }
 }
+

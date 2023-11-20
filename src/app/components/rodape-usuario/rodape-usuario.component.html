@@ -1,6 +1,26 @@
 <div class="flex">
-  <img [src]="user.imagemUrl" alt="" srcset="" class="img" (click)="openModal()" />
+  <img [src]="user.imagemUrl" alt="" srcset="" class="img" (click)="showDialog()" />
   <span> {{ user.nome }} </span>
-  <fa-icon class="icon" [icon]="exitIcon" (click)="logout()">
+  <fa-icon class="icon" [icon]="exitIcon">
   </fa-icon>
+
+  <p-dialog [(visible)]="visible" [modal]="true" [style]="{ width: '50vw', padding: '0' }" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="body">
+      <div class="modal">
+        <div class="user">
+          <img [src]="userDetalhado.imagemUrl" alt="" srcset=""
+          style="width: 55px; height: 55px; border-radius: 50%; margin-left: 0; margin-right: 15px;" />
+          <h3>{{userDetalhado.nome}}</h3>
+        </div>
+        <div class="body">
+          <p class="seguidores">Seguidores: {{userDetalhado.seguidores}}</p>
+          <p class="dark">Dark mode</p>
+          <p-inputSwitch [(ngModel)]="checked" (onChange)="toggleDarkMode()"></p-inputSwitch>
+        </div>
+      </div>
+    </ng-template>
+
+    
+  </p-dialog>
+
 </div>

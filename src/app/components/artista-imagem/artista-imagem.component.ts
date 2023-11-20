@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./artista-imagem.component.scss']
 })
 export class ArtistaImagemComponent implements OnInit {
-  
+  darkMode: boolean;
   @Input()
   imagemSrc = '';
 
@@ -16,7 +16,18 @@ export class ArtistaImagemComponent implements OnInit {
   constructor(){ }
 
   ngOnInit(): void {
+    const storedDarkMode = localStorage.getItem('darkMode');
+    this.darkMode = storedDarkMode === 'true';
     
+    if (this.darkMode) {
+      document.querySelectorAll('*').forEach(element => {
+        element.classList.add('dark-mode'); 
+      });
+    } else {
+      document.querySelectorAll('*').forEach(element => {
+        element.classList.remove('dark-mode');
+      });
+    }
   }
 
   onClick() {

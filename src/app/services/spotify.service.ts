@@ -9,11 +9,13 @@ import {
   SpotifySinglePlaylistParaPlaylist,
   SpotifyTrackParaMusica,
   SpotifyUserParaUsuario,
+  SpotifyUserParaUsuarioDetalhado,
 } from '../Common/spotifyHelper';
 import { IPlaylist } from '../Interfaces/IPlaylist';
 import { IUsuario } from '../Interfaces/IUsuario';
 import { IArtista } from '../Interfaces/IArtista';
 import { IMusica } from '../Interfaces/IMusica';
+import { IUsuarioDetalhado } from '../Interfaces/IUsuarioDetalhado';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +23,7 @@ import { IMusica } from '../Interfaces/IMusica';
 export class SpotifyService {
   spotifyApi: Spotify.SpotifyWebApiJs = null;
   usuario: IUsuario;
+  usuarioDetalhado: IUsuarioDetalhado;
 
   constructor(private router: Router) {
     this.spotifyApi = new Spotify();
@@ -36,6 +39,7 @@ export class SpotifyService {
     try {
       this.definirAccessToken(token);
       await this.obterSpotifyUsuario();
+      await this.obterUsuarioDetalhado();
       return !!this.usuario;
     } catch (ex) {
       return false;
@@ -45,6 +49,11 @@ export class SpotifyService {
   async obterSpotifyUsuario() {
     const userInfo = await this.spotifyApi.getMe();
     this.usuario = SpotifyUserParaUsuario(userInfo);
+  }
+  
+  async obterUsuarioDetalhado() {
+    const userInfoDetalhado = await this.spotifyApi.getMe();
+    this.usuarioDetalhado = SpotifyUserParaUsuarioDetalhado(userInfoDetalhado);
   }
 
   obterUrlLogin() {

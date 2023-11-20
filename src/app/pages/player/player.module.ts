@@ -20,6 +20,8 @@ import { ArtistaImagemComponent } from 'src/app/components/artista-imagem/artist
 import { PlayerCardComponent } from 'src/app/components/player-card/player-card.component';
 import { ListaMusicasComponent } from '../lista-musicas/lista-musicas.component';
 import { BannerComponent } from 'src/app/components/banner/banner.component';
+import { DialogModule } from 'primeng/dialog';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { BannerComponent } from 'src/app/components/banner/banner.component';
     CommonModule,
     FontAwesomeModule,
     FormsModule,
+    InputSwitchModule,
     RouterModule.forChild(PlayerRotas),
+    DialogModule
   ],
 })
 export class PlayerModule {}

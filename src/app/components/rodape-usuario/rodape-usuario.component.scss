@@ -31,4 +31,59 @@ div{
     .img{
         cursor: pointer;
     }
+
+    .modal{
+        display: flex; 
+        align-items: center; 
+        border: none;
+        padding-top: 0;
+        padding: 0;
+        justify-content: space-between;
+    }
+
+    .button-end {
+        justify-content: flex-end;
+        margin-right: 15px;
+    }
+    
+    .user {
+        display: flex; 
+        align-items: flex-start;
+        border: none;
+        padding: 0;
+        width: 180px;
+    }
+
+    .body {
+        display: flex; 
+        border: none;
+        padding: 0;
+        width: 500px;
+        padding-right: 40px;
+    }
+
+    .seguidores {
+        align-items: center; 
+        justify-content: flex-start;
+        margin-left: 30px;
+    }
+
+    ::ng-deep {
+        .p-inputswitch {
+          &.p-inputswitch-checked {
+            .p-inputswitch-slider {
+              background-color: $cor-primaria !important;
+                }
+            }
+        }
+        &.dark-mode{
+            background-color: $cor-fundo2-dark;
+        }
+    }
+}
+
+.dark-mode {
+    ::ng-deep {
+        background-color: $cor-fundo2-dark;
+    }
 }
