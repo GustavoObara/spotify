@@ -76,14 +76,23 @@ div{
                 }
             }
         }
-        &.dark-mode{
-            background-color: $cor-fundo2-dark;
+        .ng-tns-c4042076560-0 {
+            .p-dialog-header {
+                background-color: #f0f0f0;
+            }
+            .dark-mode {
+                background-color: $cor-fundo2-dark;
+            }
+        }
+        .ng-tns-c4042076560-0 {
+            .p-dialog-content {
+                background-color: #f0f0f0;
+            }
+            .dark-mode {
+                background-color: $cor-fundo2-dark;
+            }
         }
     }
-}
 
-.dark-mode {
-    ::ng-deep {
-        background-color: $cor-fundo2-dark;
-    }
+    
 }

@@ -1,10 +1,10 @@
 <div class="flex">
   <img [src]="user.imagemUrl" alt="" srcset="" class="img" (click)="showDialog()" />
   <span> {{ user.nome }} </span>
-  <fa-icon class="icon" [icon]="exitIcon">
+  <fa-icon class="icon" [icon]="exitIcon" (click)="logout()">
   </fa-icon>
 
-  <p-dialog [(visible)]="visible" [modal]="true" [style]="{ width: '50vw', padding: '0' }" [draggable]="false" [resizable]="false">
+  <p-dialog [(visible)]="visible" [modal]="true" [style]="{ width: '50vw', padding: '0' }" [draggable]="false" [resizable]="false" styleClass="active">
     <ng-template pTemplate="body">
       <div class="modal">
         <div class="user">
@@ -19,8 +19,6 @@
         </div>
       </div>
     </ng-template>
-
-    
   </p-dialog>
 
 </div>

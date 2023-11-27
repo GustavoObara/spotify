@@ -47,7 +47,6 @@ export class RodapeUsuarioComponent implements OnInit {
     const isDarkModeClassPresent = document.body.classList.contains('dark-mode');
     if (isDarkModeClassPresent) {
       this.checked = true;
-      
     }
   }
 
@@ -58,7 +57,7 @@ export class RodapeUsuarioComponent implements OnInit {
   visible: boolean = false;
 
   showDialog() {
-        this.visible = true;
+    this.visible = true;
   }
 
   toggleDarkMode() {
@@ -67,6 +66,7 @@ export class RodapeUsuarioComponent implements OnInit {
       document.querySelectorAll('*').forEach(element => {
         element.classList.add('dark-mode'); 
       });
+      console.log("passou aqui porra");
     } else {
       document.querySelectorAll('*').forEach(element => {
         element.classList.remove('dark-mode');
